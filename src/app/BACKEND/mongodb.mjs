@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 
-// Corrected MongoDB URI without 'nextdata'
 const mongo_URL =
-  "mongodb+srv://manideepreddy170400:Manideep100@cluster0.tvgnemc.mongodb.net/mydatabase?retryWrites=true&w=majority";
-
+  "mongodb+srv://manideepreddy170400:Manideep100@cluster0.tvgnemc.mongodb.net/nextData";
 const mongooseData = (app) => {
   mongoose
     .connect(mongo_URL)
