@@ -1,26 +1,28 @@
 import MainPage from "./schema.mjs";
 
-const [init] = MainPage();
+const { create, find } = MainPage;
 
 function home(app) {
   app.post("/home/login", async (req, res) => {
     console.log(req.body);
     try {
-      const response = await init.create(req.body);
+      const response = await create(req.body);
       res.send(response);
     } catch (error) {
       console.error("error", error);
-      console.log("data not created");
+      res.status(500).send("Data not created");
     }
   });
+
   app.get("/home/create", async (req, res) => {
-    console.log(req.body);
+    const { email } = req.query;
+    console.log(email);
     try {
-      const response = await init.find(req.body.email);
+      const response = await find(email);
       res.send(response);
     } catch (error) {
       console.error("error", error);
-      console.log("data not found");
+      res.status(500).send("Data not found");
     }
   });
 }
